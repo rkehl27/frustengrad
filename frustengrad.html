@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by anonymous (http://jsbin.com/neluyebava/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<!-- <meta name="robots" content="noindex">
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+          integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+          crossorigin=""></script>
+  <script type="text/javascript" src=""
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<script id="jsbin-javascript">
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+L.tileLayer.zoomify('http://thematicmapping.org/playground/zoomify/books/', {
+    width: 5472,
+    height: 3648,
+    tolerance: 0.8,
+    attribution: 'Photo: Bjørn Sandvik'
+}).addTo(map);
+
+
+var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+var circle = L.circle([51.508, -0.11], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+}).addTo(mymap);
+
+var polygon = L.polygon([
+    [51.509, -0.08],
+    [51.503, -0.06],
+    [51.51, -0.047]
+]).addTo(mymap);
+</script>
+</body>
+</html> -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Leaflet Zoomify Demo</title>
+    <link rel="stylesheet" href="LinearMeasurement/src/Leaflet.LinearMeasurement.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+<!--      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script> -->
+    <script type="text/javascript" src="LinearMeasurement/src/Leaflet.LinearMeasurement.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/gokertanrisever/leaflet-ruler/master/src/leaflet-ruler.css">
+<script src="https://cdn.rawgit.com/gokertanrisever/leaflet-ruler/master/src/leaflet-ruler.js"></script>
+    <script src="leaflet-rastercoords/rastercoords.js"></script>
+
+    <script type="text/javascript" src="L.TileLayer.Zoomify.js"></script>
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+    <![endif]-->
+    <style type="text/css">
+        html, body, #photo {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="photo"></div>
+    <script type="text/javascript">
+      //var L = require('leaflet')
+      //L.RasterCoords = require('leaflet-rastercoords')
+
+      var map = L.map('photo', {
+        maxZoom: 15,
+        minZoom: -20,
+        crs: L.CRS.Simple
+      }).setView(new L.LatLng(0,0), 0);
+
+      // var layer = L.tileLayer.zoomify('./frustengrad_map/', { 
+      //     width: 7200, 
+      //     height: 7200,
+      //     tolerance: 0.8,
+      //     attribution: 'Map: Im a map!'
+      // }).addTo(map);
+
+      var bounds = [[0,0],[7200,7200]];
+      var image = L.imageOverlay('map.jpg', bounds).addTo(map);
+
+      var Ruler = new L.Control.LinearMeasurement({
+        unitSystem: 'imperial',
+        color: '#4B84FF',
+        type: 'line'
+      });
+
+      map.addControl(Ruler);
+
+      // var map = L.map('map')
+
+      // // assign map and image dimensions
+      // // var rc = new L.RasterCoords(map, img)
+      // // set max zoom Level (might be `x` if gdal2tiles was called with `-z 0-x` option)
+      // map.setMaxZoom(rc.zoomLevel())
+      // // all coordinates need to be unprojected using the `unproject` method
+      // // set the view in the lower right edge of the image
+      // map.setView(rc.unproject([img[0], img[1]]), 2)
+
+      // // set markers on click events in the map
+      // map.on('click', function (event) {
+      //   // any position in leaflet needs to be projected to obtain the image coordinates
+      //   var coords = rc.project(event.latlng)
+      //   var marker = L.marker(rc.unproject(coords))
+      //     .addTo(map)
+      //   marker.bindPopup('[' + Math.floor(coords.x) + ',' + Math.floor(coords.y) + ']')
+      //     .openPopup()
+      // })
+
+      // // the tile layer containing the image generated with `gdal2tiles --leaflet -p raster -w none <img> tiles`
+      // L.tileLayer('./tiles/{z}/{x}/{y}.png', {
+      //   noWrap: true
+      // }).addTo(map)
+
+
+      // var options = {
+      //           position: 'topleft',
+      //           lengthUnit: {
+      //             factor: 0.539956803,    //  from km to nm
+      //             display: 'Nautical Miles',
+      //             decimal: 2
+      //           }
+      //         };
+      // L.control.ruler(options).addTo(map);
+
+      // L.control.scale().addTo(map);
+
+
+      map.fitBounds(bounds);
+    </script>
+</body>
+</html>
