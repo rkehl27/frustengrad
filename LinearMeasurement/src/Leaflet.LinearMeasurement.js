@@ -545,19 +545,19 @@
               /* If there is a change in the segment length we want to re-space
                  the dots on the multi line */
               if(old_separation !== this.separation && this.fixedLast){
-                  this.cleanUpMarkers();
-                  this.cleanUpFixed();
+                  // this.cleanUpMarkers();
+                  // this.cleanUpFixed();
 
-                  var multi_latlngs = this.multi.getLatLngs();
+                  // var multi_latlngs = this.multi.getLatLngs();
 
-                  for(var s in multi_latlngs){
-                      dimension += this.displayMarkers.apply(this, [multi_latlngs[s], true, dimension]);
-                  }
+                  // for(var s in multi_latlngs){
+                  //     dimension += this.displayMarkers.apply(this, [multi_latlngs[s], true, dimension]);
+                  // }
 
-                  this.displayMarkers.apply(this, [this.poly.getLatLngs(), false, this.sum]);
+                  // this.displayMarkers.apply(this, [this.poly.getLatLngs(), false, this.sum]);
 
-                  /* Review that the dots are in correct units */
-                  this.convertDots();
+                  // /* Review that the dots are in correct units */
+                  // this.convertDots();
 
               } else {
                   this.cleanUpMarkers();
