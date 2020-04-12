@@ -4,26 +4,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Leaflet Zoomify Demo</title>
-    <!-- <link rel="stylesheet" href="LinearMeasurement/src/Leaflet.LinearMeasurement.css" /> -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <title>Frustengrad Map</title>
+    <link rel="stylesheet" href="./leaflet/leaflet.css"/>
+    <script src="./leaflet/leaflet.js"></script>
 
-<!--     <script type="text/javascript" src="LinearMeasurement/src/Leaflet.LinearMeasurement.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="./leaflet-ruler.css">
-<!-- <script src="./leaflet-ruler.js"></script> -->
-
-<link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
-<script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.3.2/leaflet.draw.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.3.2/leaflet.draw.js"></script>
-
-    <!-- Files from current project -->
-    <link rel="stylesheet" href="node_modules/leaflet.measurecontrol/leaflet.measurecontrol.css" />
-    <script src="node_modules/leaflet.measurecontrol/leaflet.measurecontrol.js"></script>
-
-
+    <link rel="stylesheet" type="text/css" href="./leaflet-ruler-master/src/leaflet-ruler.css">
+    <script src="./leaflet-ruler-master/src/leaflet-ruler.js"></script>
 
     <style type="text/css">
         html, body, #photo {
@@ -49,64 +35,36 @@
       var image = L.imageOverlay('map.jpg', bounds).addTo(map);
       map.setView([3500, 3500], -4);
 
+      // var yx = L.latLng;
 
-      // var options = {
-      //           position: 'topleft',
-      //           lengthUnit: {
-      //             factor: 0.539956803,    //  from km to nm
-      //             display: 'Nautical Miles',
-      //             decimal: 2
-      //           }
-      //         };
-      // L.control.ruler(options).addTo(map);
-
-      var yx = L.latLng;
-
-      var xy = function(x, y) {
-          if (L.Util.isArray(x)) {    // When doing xy([x, y]);
-              return yx(x[1], x[0]);
-          }
-          return yx(y, x);  // When doing xy(x, y);
-      }; //1345, 235
+      // var xy = function(x, y) {
+      //     if (L.Util.isArray(x)) {    // When doing xy([x, y]);
+      //         return yx(x[1], x[0]);
+      //     }
+      //     return yx(y, x);  // When doing xy(x, y);
+      // }; //1345, 235
 
 
-      var firstpoint = xy(1388, 273);
-      var secondpoint = xy(795, 273);
+      // var firstpoint = xy(1388, 273);
+      // var secondpoint = xy(795, 273);
 
-      L.marker(firstpoint).addTo(map);
-      L.marker(secondpoint).addTo(map);
+      // L.marker(firstpoint).addTo(map);
+      // L.marker(secondpoint).addTo(map);
 
-      var travel = L.polyline([secondpoint, firstpoint]).addTo(map);
-      console.log(map.distance(firstpoint, secondpoint));
-
-
-var options = {
-          position: 'topleft',
-          lengthUnit: {
-            factor: 0.539956803,    //  from km to nm
-            display: 'Nautical Miles',
-            decimal: 2
-          }
-        };
-L.control.ruler(options).addTo(map);
-
-      // L.Control.measureControl().addTo(map);
+      // var travel = L.polyline([secondpoint, firstpoint]).addTo(map);
+      // console.log(map.distance(firstpoint, secondpoint));
 
 
-      // L.control.scale().addTo(map);
-      // map.fitBounds(bounds);
+      var options = {
+                position: 'topleft',
+                lengthUnit: {
+                  factor: 0.539956803,    //  from km to nm
+                  display: 'miles',
+                  decimal: 1
+                }
+              };
+      L.control.ruler(options).addTo(map);
 
-// L.control.polylineMeasure({unit: 'landmiles'}).addTo(map);
-
-
-
-      // var Ruler = new L.Control.LinearMeasurement({
-      //   unitSystem: 'imperial',
-      //   color: '#4B84FF',
-      //   type: 'line'
-      // });
-
-      // map.addControl(Ruler);
     </script>
 </body>
 </html>

@@ -1,9 +1,0 @@
-bower_components/
-node_modules/
-example/
-tmp/
-bower.json
-component.json
-*.log
-*.tgz
-.*
