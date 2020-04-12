@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Frustengrad Map</title>
+    <link rel="stylesheet" href="./leaflet/leaflet.css"/>
+    <script src="./leaflet/leaflet.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./leaflet-ruler-master/src/leaflet-ruler.css">
+    <script src="./leaflet-ruler-master/src/leaflet-ruler.js"></script>
+
+    <style type="text/css">
+        html, body, #photo {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="photo"></div>
+    <script type="text/javascript">
+      var map = L.map('photo', {
+        crs: L.CRS.Simple,
+        minZoom: -4,
+        maxZoom: 2
+      });
+
+
+      var bounds = [[0,0],[7250,7250]];
+      var image = L.imageOverlay('map.jpg', bounds).addTo(map);
+      map.setView([3500, 3500], -4);
+
+      // var yx = L.latLng;
+
+      // var xy = function(x, y) {
+      //     if (L.Util.isArray(x)) {    // When doing xy([x, y]);
+      //         return yx(x[1], x[0]);
+      //     }
+      //     return yx(y, x);  // When doing xy(x, y);
+      // }; //1345, 235
+
+
+      // var firstpoint = xy(1388, 273);
+      // var secondpoint = xy(795, 273);
+
+      // L.marker(firstpoint).addTo(map);
+      // L.marker(secondpoint).addTo(map);
+
+      // var travel = L.polyline([secondpoint, firstpoint]).addTo(map);
+      // console.log(map.distance(firstpoint, secondpoint));
+
+
+      var options = {
+                position: 'topleft',
+                lengthUnit: {
+                  factor: 0.539956803,    //  from km to nm
+                  display: 'miles',
+                  decimal: 1
+                }
+              };
+      L.control.ruler(options).addTo(map);
+
+    </script>
+</body>
+</html>
