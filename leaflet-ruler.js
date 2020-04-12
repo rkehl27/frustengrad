@@ -82,6 +82,7 @@
     },
     _clicked: function(e) {
       this._clickedLatLong = e.latlng;
+      this._startPoint = e.latlng;
       this._clickedPoints.push(this._clickedLatLong);
       L.circleMarker(this._clickedLatLong, this.options.circleMarker).addTo(this._pointLayer);
       if(this._clickCount > 0 && !e.latlng.equals(this._clickedPoints[this._clickedPoints.length - 2])){
@@ -104,6 +105,7 @@
       if (this._clickedLatLong){
         L.DomEvent.off(this._container, 'click', this._toggleMeasure, this);
         this._movingLatLong = e.latlng;
+        this._endPoint = e.latlng;
         if (this._tempLine){
           this._map.removeLayer(this._tempLine);
           this._map.removeLayer(this._tempPoint);
@@ -147,16 +149,23 @@
       var brng = Math.atan2(y, x)*((this.options.angleUnit.factor ? this.options.angleUnit.factor/2 : 180)/Math.PI);
       brng += brng < 0 ? (this.options.angleUnit.factor ? this.options.angleUnit.factor : 360) : 0;
       // distance
-      var R = this.options.lengthUnit.factor ? 6371 * this.options.lengthUnit.factor : 6371; // kilometres
-      var deltaF = (f2 - f1)*toRadian;
-      var deltaL = (l2 - l1)*toRadian;
-      var a = Math.sin(deltaF/2) * Math.sin(deltaF/2) + Math.cos(f1*toRadian) * Math.cos(f2*toRadian) * Math.sin(deltaL/2) * Math.sin(deltaL/2);
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      var distance = R * c;
+      // var R = this.options.lengthUnit.factor ? 6371 * this.options.lengthUnit.factor : 6371; // kilometres
+      // var deltaF = (f2 - f1)*toRadian;
+      // var deltaL = (l2 - l1)*toRadian;
+      // var a = Math.sin(deltaF/2) * Math.sin(deltaF/2) + Math.cos(f1*toRadian) * Math.cos(f2*toRadian) * Math.sin(deltaL/2) * Math.sin(deltaL/2);
+      // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      // var distance = R * c;
+      // this._result = {
+      //   Bearing: brng,
+      //   Distance: distance
+      // };
+
+      var distance = map.distance(this._startPoint, this._endPoint);
+
       this._result = {
-        Bearing: brng,
+        Bearing: 0,
         Distance: distance
-      };
+      }
     },
     _closePath: function() {
       this._map.removeLayer(this._tempLine);
