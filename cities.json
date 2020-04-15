@@ -1,0 +1,317 @@
+{
+	"states": [
+		{
+			"name":"Western Southern Paag",
+			"bounds":"",
+			"cities": []
+		},
+		{
+			"name":"Eastern Southern Paag",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Dorm",
+					"x":1824,
+					"y":2526
+				}
+			]
+		},
+		{
+			"name":"Northern Paag",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Ynnihe",
+					"x":2934,
+					"y":1826
+				}
+			]
+		},
+		{
+			"name":"Moonisi",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Mn' Abba",
+					"x":4392,
+					"y":1622
+				}
+			]
+		},
+		{
+			"name":"Bajoc",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"A'amok",
+					"x":6252,
+					"y":4284
+				},
+				{
+					"name":"Ancient A'amok",
+					"x":6756,
+					"y":4172
+				}
+
+			]
+		},
+		{
+			"name":"The Fightlands",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Epigues",
+					"x":444,
+					"y":3104
+				}
+			]
+		},
+		{
+			"name":"Eastmarch",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Faburnook",
+					"x":1522,
+					"y":3470
+				}
+			]
+		},
+		{
+			"name":"Miarck Fields",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Oztar",
+					"x":1734,
+					"y":2936
+				}
+			]
+		},
+		{
+			"name":"Advalum Roost",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Pregur",
+					"x":2218,
+					"y":3436
+				}
+			]
+		},
+		{
+			"name":"Twin River",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Brinehallow",
+					"x":2208,
+					"y":3804
+				}
+			]
+		},
+		{
+			"name":"Royal Covenant",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Vatica",
+					"x":2732,
+					"y":4200
+				}
+			]
+		},
+		{
+			"name":"Dwarvenkeep",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Ironawn",
+					"x":3240,
+					"y":4062
+				}
+			]
+		},
+		{
+			"name":"Low-Lake",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Camont",
+					"x":3148,
+					"y":3606
+				}
+			]
+		},
+		{
+			"name":"Sweetwater",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Mythdenn",
+					"x":3354,
+					"y":2828
+				}
+			]
+		},
+		{
+			"name":"Gateway to the North",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Salude",
+					"x":3574,
+					"y":2438
+				}
+			]
+		},
+		{
+			"name":"The Wilds",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Ekinai",
+					"x":4304,
+					"y":2312
+				}
+			]
+		},
+		{
+			"name":"Harmony",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Ingsall",
+					"x":4760,
+					"y":2658
+				}
+			]
+		},
+		{
+			"name":"Heartland",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Harth",
+					"x":4830,
+					"y":3194
+				}
+			]
+		},
+		{
+			"name":"Lonely Island",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Avithune",
+					"x":4376,
+					"y":2982
+				}
+			]
+		},
+		{
+			"name":"Golden Coast",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Overock",
+					"x":4210,
+					"y":3622
+				}
+			]
+		},
+		{
+			"name":"Last Watch",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Gaet",
+					"x":4426,
+					"y":3698
+				}
+			]
+		},
+		{
+			"name":"Dry Dock",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Aethrumn",
+					"x":3640,
+					"y":4682
+				}
+			]
+		},
+		{
+			"name":"Southwater",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Seanti",
+					"x":2546,
+					"y":4930
+				}
+			]
+		},
+		{
+			"name":"The Great Forest",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Ny'ale",
+					"x":2122,
+					"y":4392
+				},
+				{
+					"name":"Elflora",
+					"x":2124,
+					"y":4296
+				}
+			]
+		},
+		{
+			"name":"Fishbeds",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Paytoa",
+					"x":1502,
+					"y":4628
+				}
+			]
+		},
+		{
+			"name":"Holy Lands",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Equis",
+					"x":1422,
+					"y":4008
+				}
+			]
+		},
+		{
+			"name":"Paradise",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Paradise",
+					"x":780,
+					"y":4270
+				}
+			]
+		},
+		{
+			"name":"Western Shore",
+			"bounds":"",
+			"cities": [
+				{
+					"name":"Marcath",
+					"x":438,
+					"y":3744
+				}
+			]
+		}
+	]
+}
