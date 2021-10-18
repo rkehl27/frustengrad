@@ -153,8 +153,10 @@
       // var a = Math.sin(deltaF/2) * Math.sin(deltaF/2) + Math.cos(f1*toRadian) * Math.cos(f2*toRadian) * Math.sin(deltaL/2) * Math.sin(deltaL/2);
       // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       var distance = map.distance(this._clickedLatLong, this._movingLatLong);
+      
+      var bearing = distance/30;
       this._result = {
-        Bearing: 0,
+        Bearing: bearing,
         Distance: distance
       };
     },
