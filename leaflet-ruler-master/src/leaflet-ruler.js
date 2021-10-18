@@ -152,12 +152,133 @@
       // var deltaL = (l2 - l1)*toRadian;
       // var a = Math.sin(deltaF/2) * Math.sin(deltaF/2) + Math.cos(f1*toRadian) * Math.cos(f2*toRadian) * Math.sin(deltaL/2) * Math.sin(deltaL/2);
       // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      var distance = map.distance(this._clickedLatLong, this._movingLatLong);
+      var distanceFinal = map.distance(this._clickedLatLong, this._movingLatLong);
+      var distance = distanceFinal;
       
-      var bearing = distance/30;
+      var unit = null;
+      var travelTime = null;
+      var travelTimeRemainder = null;
+      var travelTimeApproximation = null;
+
+      var hoursPerDay = "8";
+      var pace = "normal";
+      var terrainRatio = "25";
+      var baseMovementSpeed = 30;
+
+
+      if (false)
+      {
+        console.log('missing required data');
+        console.log(distance, hoursPerDay, pace, terrainRatio, baseMovementSpeed);
+      }
+      else
+      {
+        // adjust distance to account for terrain
+        var distanceMultiplier = 1 + (terrainRatio / 100);
+
+        // if flying, screw terrain
+        //if (false)
+        //	distanceMultiplier = 1;
+
+        // console.log('Recalculating Travel Time for', distance, 'miles', 'with a multiplier of', distanceMultiplier);
+        distance = distance * distanceMultiplier;
+
+        var milesPerHour = baseMovementSpeed / 10;
+        if (pace == 'fast')
+          milesPerHour = ((1/3)+1) * milesPerHour;
+        else if (pace == 'slow')
+          milesPerHour = (1-(1/3)) * milesPerHour;
+        // console.log('Moving @', milesPerHour, 'mph');
+
+        var hours = distance / milesPerHour;
+        // console.log('hours =', hours);
+
+        if (hours < 1)
+        {
+          var minutes = hours * 60;
+
+          // console.log('minutes =', minutes);
+
+          if (minutes < 1)
+          {
+            travelTime = Math.ceil(minutes / 60);
+            if (travelTime == 1)
+              unit = 'second';
+            else
+              unit = 'seconds';
+          }
+          else
+          {
+            minutes_orig = minutes;
+            minutes = Math.floor(minutes);
+            seconds = Math.ceil(minutes_orig - minutes * 60);
+
+            travelTime = minutes;
+            if (minutes == 1)
+              unit = 'minute';
+            else
+              unit = 'minutes';
+
+            if (seconds > 1)
+              travelTimeRemainder = seconds + ' seconds';
+          }
+
+        }
+        else if (hours > hoursPerDay)
+        {
+          var days = Math.floor(hours / hoursPerDay);
+
+          if (days == 1)
+            unit = 'Day';
+          else
+            unit = 'Days';
+
+          travelTime = days;
+          travelTimeRemainder = Math.ceil(hours % hoursPerDay);
+
+          if (travelTimeRemainder == 1)
+            travelTimeRemainder = travelTimeRemainder + ' Hour';
+          else
+            travelTimeRemainder = travelTimeRemainder + ' Hours';
+
+          if (days > 45)
+          {
+            travelTimeApproximation = Math.round((days / 30.5) * 2) / 2;
+            travelTimeApproximation = 'about ' + travelTimeApproximation + ' months';
+          }
+          else if (days >= 14)
+          {
+            travelTimeApproximation = Math.round((days / 7) * 2) / 2;
+            travelTimeApproximation = 'about ' + travelTimeApproximation + ' weeks';
+          }
+        }
+        else
+        {
+          travelTime = Math.floor(hours);
+          if (travelTime == 1)
+            unit = 'Hour';
+          else
+            unit = 'Hours';
+          minutes = Math.ceil((hours - travelTime) * 60);
+          if (minutes == 1)
+            travelTimeRemainder = minute + ' Minute';
+          else if (minutes > 1)
+            travelTimeRemainder = minutes + ' Minutes';
+        }			
+      }
+
+      if (travelTimeRemainder)
+      {
+        travelTimeRemainder = ' and ' + travelTimeRemainder;
+      }
+      
+      
+     var bearing = travelTime + ' days and ' + travelTimeRemainder;
+      
+      
       this._result = {
         Bearing: bearing,
-        Distance: distance
+        Distance: distanceFinal
       };
     },
     _closePath: function() {
