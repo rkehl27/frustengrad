@@ -154,7 +154,7 @@
       // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       var distanceFinal = map.distance(this._clickedLatLong, this._movingLatLong);
       console.log("Final distance = " + this._totalLength);
-      var distance = distanceFinal;
+      var distance = this._totalLength + distanceFinal;
       
       var unit = null;
       var travelTime = null;
@@ -262,7 +262,7 @@
             unit = 'Hours';
           minutes = Math.ceil((hours - travelTime) * 60);
           if (minutes == 1)
-            travelTimeRemainder = minute + ' Minute';
+            travelTimeRemainder = minutes + ' Minute';
           else if (minutes > 1)
             travelTimeRemainder = minutes + ' Minutes';
         }			
@@ -275,7 +275,7 @@
       
       
      var bearing = travelTime + ' days and ' + travelTimeRemainder;
-      
+     var bearing = hours; 
       
       this._result = {
         Bearing: bearing,
