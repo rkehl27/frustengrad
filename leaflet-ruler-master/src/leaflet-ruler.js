@@ -209,9 +209,9 @@
           }
           else
           {
-            minutes_orig = minutes;
+            var minutes_orig = minutes;
             minutes = Math.floor(minutes);
-            seconds = Math.ceil(minutes_orig - minutes * 60);
+            var seconds = Math.ceil(minutes_orig - minutes * 60);
 
             travelTime = minutes;
             if (minutes == 1)
