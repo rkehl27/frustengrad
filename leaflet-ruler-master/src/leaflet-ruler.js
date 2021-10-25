@@ -153,6 +153,7 @@
       // var a = Math.sin(deltaF/2) * Math.sin(deltaF/2) + Math.cos(f1*toRadian) * Math.cos(f2*toRadian) * Math.sin(deltaL/2) * Math.sin(deltaL/2);
       // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       var distanceFinal = map.distance(this._clickedLatLong, this._movingLatLong);
+      console.log("Final distance = " + this._totalLength);
       var distance = distanceFinal;
       
       var unit = null;
@@ -180,7 +181,7 @@
         //if (false)
         //	distanceMultiplier = 1;
 
-        // console.log('Recalculating Travel Time for', distance, 'miles', 'with a multiplier of', distanceMultiplier);
+        console.log('Recalculating Travel Time for', distance, 'miles', 'with a multiplier of', distanceMultiplier);
         distance = distance * distanceMultiplier;
 
         var milesPerHour = baseMovementSpeed / 10;
@@ -188,16 +189,16 @@
           milesPerHour = ((1/3)+1) * milesPerHour;
         else if (pace == 'slow')
           milesPerHour = (1-(1/3)) * milesPerHour;
-        // console.log('Moving @', milesPerHour, 'mph');
+        console.log('Moving @', milesPerHour, 'mph');
 
         var hours = distance / milesPerHour;
-        // console.log('hours =', hours);
+        console.log('hours =', hours);
 
         if (hours < 1)
         {
           var minutes = hours * 60;
 
-          // console.log('minutes =', minutes);
+          console.log('minutes =', minutes);
 
           if (minutes < 1)
           {
